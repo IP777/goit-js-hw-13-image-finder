@@ -33,13 +33,15 @@ input[type='text'] {
 }
 
 ul.gallery {
+  display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   padding-top: 25px;
   list-style-type: none;
 }
 
-.photo-card {
+.gallery > li {
   width: 33.3333%;
 }
 
@@ -48,8 +50,10 @@ ul.gallery {
 }
 
 .photo-card > .stats {
+  position: absolute;
+  transform: translateY(-64px);
   display: flex;
   justify-content: space-around;
-  width: inherit;
   background-color: rgba(252, 252, 252, 0.452);
+  width: 33.3333%;
 }
