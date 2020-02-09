@@ -17,4 +17,39 @@ body {
    * CSS image reference example.
    */
   background-image: url('./images/bg-pattern.png');
+  margin: 0;
+}
+
+form.search-form {
+  position: fixed;
+  height: 25px;
+  width: 100%;
+  background-color: cadetblue;
+  opacity: 0.9;
+}
+
+input[type='text'] {
+  font-size: 16px;
+}
+
+ul.gallery {
+  padding: 0;
+  margin: 0;
+  padding-top: 25px;
+  list-style-type: none;
+}
+
+.photo-card {
+  width: 33.3333%;
+}
+
+.photo-card > img {
+  width: 100%;
+}
+
+.photo-card > .stats {
+  display: flex;
+  justify-content: space-around;
+  width: inherit;
+  background-color: rgba(252, 252, 252, 0.452);
 }

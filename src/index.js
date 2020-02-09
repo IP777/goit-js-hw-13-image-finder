@@ -1,3 +1,2 @@
 import './styles.css';
-
-console.log('HI its webpack');
+import './js/search';
