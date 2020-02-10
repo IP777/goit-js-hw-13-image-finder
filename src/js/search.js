@@ -1,5 +1,7 @@
 import imageCardTamplate from '../template/card.hbs';
 import fake_request from '../JSON/fake_request';
+import msnry from './My_masonry';
+import imagesLoaded from 'imagesloaded';
 
 const refs = {
   search_form: document.querySelector('#search-form'),
@@ -16,13 +18,13 @@ const myHttpRequest = {
 
   //https://pixabay.com/api/?key=15197033-6a0a9e6d0bedb15a0a6a5ba9a&q=yellow+flowers&image_type=photo&pretty=true&per_page=3
 
-  getUrl() {
+  buildUrl() {
     const URL = `${this.baseUrl}api/?key=${this.API_KEY}&q=${this.request}&image_type=photo&per_page=12&page=${this.pagination}`;
     return URL;
   },
   getRequest(condition) {
     this.request = condition;
-    fetch(this.getUrl(), {
+    fetch(this.buildUrl(), {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -54,13 +56,22 @@ const myHttpRequest = {
   },
 };
 
-//myHttpRequest.getRequest();
+//myHttpRequest.getRequest('car');
 
 //------------------------------------------------
 function logSubmit(event) {
   event.preventDefault();
   myHttpRequest.getRequest(refs.form_text.value);
   //console.log(refs.form_text.value);
+  setTimeout(() => {
+    const items = document.querySelectorAll('.grid-item');
+    console.log(items);
+    msnry.appended(items);
+    msnry.layout();
+    //msnry.layout.bind(msnry);
+  }, 1000);
 }
 
 refs.form.addEventListener('submit', logSubmit);
+
+//console.log(msnry);

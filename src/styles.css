@@ -1,11 +1,5 @@
-html {
+* {
   box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
 
 body {
@@ -17,7 +11,7 @@ body {
    * CSS image reference example.
    */
   background-image: url('./images/bg-pattern.png');
-  margin: 0;
+  margin: 0 auto;
 }
 
 form.search-form {
@@ -30,30 +24,4 @@ form.search-form {
 
 input[type='text'] {
   font-size: 16px;
-}
-
-ul.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-  padding-top: 25px;
-  list-style-type: none;
-}
-
-.gallery > li {
-  width: 33.3333%;
-}
-
-.photo-card > img {
-  width: 100%;
-}
-
-.photo-card > .stats {
-  position: absolute;
-  transform: translateY(-64px);
-  display: flex;
-  justify-content: space-around;
-  background-color: rgba(252, 252, 252, 0.452);
-  width: 33.3333%;
 }
