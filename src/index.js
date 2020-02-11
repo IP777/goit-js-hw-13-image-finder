@@ -6,3 +6,4 @@ import './js/My_masonry';
 import './js/submit_form';
 import './js/InfiniteScroll';
 import './js/topButton';
+import './js/pnotifyAlerts';

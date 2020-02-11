@@ -17,6 +17,7 @@
 .grid-sizer,
 .grid-item {
   width: calc(33.3333% - 10px);
+  z-index: 1;
 }
 
 .grid-item > img {
@@ -26,25 +27,12 @@
   padding: 5px;
 }
 
-/* .grid-item {
-  display: inline-block;
-  padding: 5px;
-  float: left;
-  list-style: none;
-}
-
-.grid-item img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.grid-item .stats {
+.stats {
+  opacity: 1;
   position: absolute;
-  transform: translateY(-60px);
+  transform: translateY(-66px);
   display: flex;
   justify-content: space-around;
   background-color: rgba(252, 252, 252, 0.452);
-
-  width: calc(33.3333% - 23px);
-} */
+  width: 100%;
+}

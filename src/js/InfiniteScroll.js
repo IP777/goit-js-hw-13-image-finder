@@ -3,6 +3,7 @@ import masonryInstance from './My_masonry';
 import InfiniteScroll from 'infinite-scroll';
 import myHttpRequest from './search';
 import imageCardTamplate from '../template/card.hbs';
+import alert from './pnotifyAlerts';
 
 const infScroll = new InfiniteScroll(refs.gallery_list, {
   path() {
@@ -29,4 +30,9 @@ infScroll.on('load', (response, url) => {
 
 if (refs.form_text.value) {
   infScroll.loadNextPage();
+} else {
+  alert.pInfo(
+    'Привет',
+    'Для начала работы введи название картинок в поле Search images...',
+  );
 }

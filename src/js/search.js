@@ -3,6 +3,7 @@ import masonryInstance from './My_masonry';
 import imagesLoaded from 'imagesloaded';
 //import gridItem from '../template/cardJS';
 import refs from './refs';
+import alert from './pnotifyAlerts';
 
 const myHttpRequest = {
   baseUrl: 'https://pixabay.com/',
@@ -28,8 +29,18 @@ const myHttpRequest = {
       })
       .then(data => {
         //console.log(data);
-        this.removeMarkup();
-        this.createMarkup(data);
+
+        if (data.totalHits > 0) {
+          this.removeMarkup();
+          this.createMarkup(data);
+        } else {
+          alert.pError(
+            'Упс',
+            `По вашему запросу нечего не найдено
+            попробуйте еще...
+            `,
+          );
+        }
       })
       .catch(error => {
         console.log(`Oh no, erorr ${error}`);
@@ -69,5 +80,7 @@ const myHttpRequest = {
     });
   },
 };
+
+myHttpRequest.getRequest('car');
 
 export default myHttpRequest;
