@@ -3,14 +3,17 @@ import imagesLoaded from 'imagesloaded';
 
 const grid = document.querySelector('#gallery');
 
-const msnry = new Masonry(grid, {
+const masonryInstance = new Masonry(grid, {
   itemSelector: '.grid-item',
   columnWidth: '.grid-sizer',
   percentPosition: true,
 });
 
-imagesLoaded('#gallery').on('progress', msnry.layout.bind(msnry));
+imagesLoaded('#gallery').on(
+  'progress',
+  masonryInstance.layout.bind(masonryInstance),
+);
 
-//console.log(msnry);
+//console.log(masonryInstance);
 
-export default msnry;
+export default masonryInstance;

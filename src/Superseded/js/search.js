@@ -9,6 +9,7 @@ const myHttpRequest = {
   API_KEY: '15197033-6a0a9e6d0bedb15a0a6a5ba9a',
   request: 'flower',
   pagination: 1,
+  global_data: {},
   value: 0,
 
   //https://pixabay.com/api/?key=15197033-6a0a9e6d0bedb15a0a6a5ba9a&q=yellow+flowers&image_type=photo&pretty=true&per_page=3
@@ -39,6 +40,18 @@ const myHttpRequest = {
   },
   createMarkup(data) {
     console.log(data.hits);
+    //---------------------------
+    // const markup = data.hits
+    //   .map(img_card => imageCardTamplate(img_card))
+    //   .join('');
+
+    // //refs.gallery_list.innerHTML = markup;
+    // //const container = document.createDocumentFragment();
+    // const container = document.createElement('div');
+    // container.classList.add('container');
+    // container.innerHTML = markup;
+    // this.global_data = container;
+    //---------------------------
     const markup = data.hits.map(img_card => {
       return gridItem(
         img_card.webformatURL,
@@ -48,6 +61,7 @@ const myHttpRequest = {
         img_card.downloads,
       );
     });
+    this.global_data = markup;
     this.renderMarkup(markup);
   },
   renderMarkup(markup) {
@@ -69,3 +83,34 @@ const myHttpRequest = {
 };
 
 export default myHttpRequest;
+
+//------------------------------------------------
+/*
+function logSubmit(event) {
+  event.preventDefault();
+  myHttpRequest.removeMarkup();
+  myHttpRequest.getRequest(refs.form_text.value);
+}
+
+refs.form.addEventListener('submit', logSubmit);
+*/
+//----------------------------------------------
+//console.log(msnry);
+
+document.querySelector('#inp_remove').addEventListener('click', () => {
+  const items = document.querySelectorAll('.grid-item');
+  masonryInstance.remove(items);
+  masonryInstance.layout();
+});
+
+document.querySelector('#inp_add').addEventListener('click', () => {
+  //console.log(typeof myHttpRequest.global_data);
+  //console.log(myHttpRequest.global_data);
+  refs.gallery_list.append(...myHttpRequest.global_data);
+  masonryInstance.addItems(myHttpRequest.global_data);
+
+  imagesLoaded('#gallery').on(
+    'progress',
+    masonryInstance.layout.bind(masonryInstance),
+  );
+});
