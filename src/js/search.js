@@ -1,7 +1,7 @@
-//import imageCardTamplate from '../template/card.hbs';
+import imageCardTamplate from '../template/card.hbs';
 import masonryInstance from './My_masonry';
 import imagesLoaded from 'imagesloaded';
-import gridItem from '../template/cardJS';
+//import gridItem from '../template/cardJS';
 import refs from './refs';
 
 const myHttpRequest = {
@@ -9,17 +9,14 @@ const myHttpRequest = {
   API_KEY: '15197033-6a0a9e6d0bedb15a0a6a5ba9a',
   request: 'flower',
   pagination: 1,
-  value: 0,
 
-  //https://pixabay.com/api/?key=15197033-6a0a9e6d0bedb15a0a6a5ba9a&q=yellow+flowers&image_type=photo&pretty=true&per_page=3
-
-  buildUrl() {
-    const URL = `${this.baseUrl}api/?key=${this.API_KEY}&q=${this.request}&image_type=photo&per_page=12&page=${this.pagination}`;
+  buildUrl(pageIndex) {
+    const URL = `${this.baseUrl}api/?key=${this.API_KEY}&q=${this.request}&image_type=photo&per_page=12&page=${pageIndex}`;
     return URL;
   },
   getRequest(condition) {
     this.request = condition;
-    fetch(this.buildUrl(), {
+    fetch(this.buildUrl(this.pagination), {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -31,6 +28,7 @@ const myHttpRequest = {
       })
       .then(data => {
         //console.log(data);
+        this.removeMarkup();
         this.createMarkup(data);
       })
       .catch(error => {
@@ -38,17 +36,15 @@ const myHttpRequest = {
       });
   },
   createMarkup(data) {
-    console.log(data.hits);
-    const markup = data.hits.map(img_card => {
-      return gridItem(
-        img_card.webformatURL,
-        img_card.likes,
-        img_card.views,
-        img_card.comments,
-        img_card.downloads,
-      );
-    });
-    this.renderMarkup(markup);
+    const markup = data.hits
+      .map(img_card => imageCardTamplate(img_card))
+      .join('');
+
+    const proxyEl = document.createElement('div');
+    proxyEl.innerHTML = markup;
+    const allElements = proxyEl.querySelectorAll('.grid-item');
+
+    this.renderMarkup(allElements);
   },
   renderMarkup(markup) {
     refs.gallery_list.append(...markup);
@@ -65,6 +61,12 @@ const myHttpRequest = {
       'progress',
       masonryInstance.layout.bind(masonryInstance),
     );
+  },
+  goOnTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   },
 };
 
