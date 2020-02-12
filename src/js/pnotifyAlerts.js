@@ -7,6 +7,12 @@ const alert = {
     PNotify.error({
       title: `${title}`,
       text: `${text}`,
+      stack: {
+        dir1: 'down',
+        dir2: 'left',
+        firstpos1: 80,
+        firstpos2: 35,
+      },
     });
   },
   pSuccess(
@@ -16,6 +22,12 @@ const alert = {
     PNotify.success({
       title: `${title}`,
       text: `${text}`,
+      stack: {
+        dir1: 'down',
+        dir2: 'left',
+        firstpos1: 80,
+        firstpos2: 35,
+      },
     });
   },
   pInfo(
@@ -25,6 +37,15 @@ const alert = {
     PNotify.info({
       title: `${title}`,
       text: `${text}`,
+      delay: 2000,
+      mouseReset: true,
+      addClass: 'translucent',
+      stack: {
+        dir1: 'down',
+        dir2: 'left',
+        firstpos1: 80, // Position from the top right corner.
+        firstpos2: 35, // 70px from the top, 35px from the right.
+      },
     });
   },
 };

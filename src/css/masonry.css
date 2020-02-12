@@ -1,9 +1,8 @@
 .grid {
   /* max-width: 1200px; */
-  top: 30px;
+  top: 70px;
   margin: 0;
   list-style-type: none;
-  z-index: -1;
   padding: 0;
 }
 
@@ -17,10 +16,9 @@
 .grid-sizer,
 .grid-item {
   width: calc(33.3333% - 10px);
-  z-index: 1;
 }
 
-.grid-item > img {
+.grid-img {
   display: block;
   max-width: 100%;
   /* margin-bottom: 10px; */
@@ -28,11 +26,16 @@
 }
 
 .stats {
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   transform: translateY(-66px);
   display: flex;
   justify-content: space-around;
   background-color: rgba(252, 252, 252, 0.452);
   width: 100%;
+  transition: opacity ease-out 0.7s;
+}
+
+.grid-item:hover > .stats {
+  opacity: 1;
 }

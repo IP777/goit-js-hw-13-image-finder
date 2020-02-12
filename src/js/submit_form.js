@@ -8,3 +8,8 @@ function logSubmit(event) {
 }
 
 refs.form.addEventListener('submit', logSubmit);
+
+function deleteText(event) {
+  event.target.value = '';
+}
+refs.form_text.addEventListener('blur', deleteText, true);

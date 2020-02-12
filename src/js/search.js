@@ -81,6 +81,6 @@ const myHttpRequest = {
   },
 };
 
-myHttpRequest.getRequest('car');
+//myHttpRequest.getRequest('car');
 
 export default myHttpRequest;

@@ -5,6 +5,7 @@ const refs = {
   form_text: document.querySelector('[name=query]'),
   anti_cors: 'https://cors-anywhere.herokuapp.com/',
   top_button: document.querySelector('#inp_top'),
+  images: document.querySelectorAll('.grid-img '),
 };
 
 export default refs;

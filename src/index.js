@@ -7,3 +7,4 @@ import './js/submit_form';
 import './js/InfiniteScroll';
 import './js/topButton';
 import './js/pnotifyAlerts';
+import './js/modalImage';
