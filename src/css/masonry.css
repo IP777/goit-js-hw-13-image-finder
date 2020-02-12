@@ -39,3 +39,15 @@
 .grid-item:hover > .stats {
   opacity: 1;
 }
+
+.page-load-status {
+  display: none; /* hidden by default */
+  position: relative;
+  text-align: center;
+  padding-bottom: 5px;
+  bottom: 39px;
+  background-color: #ffff;
+  color: #6b6868;
+  opacity: 0.8;
+  border-top: 1px solid #6b6868;
+}
