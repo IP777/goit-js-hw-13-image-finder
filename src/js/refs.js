@@ -6,6 +6,14 @@ const refs = {
   anti_cors: 'https://cors-anywhere.herokuapp.com/',
   top_button: document.querySelector('#inp_top'),
   images: document.querySelectorAll('.grid-img '),
+  loader: document.querySelector('.image-load-status'),
+
+  loaderON() {
+    this.loader.style.display = 'block';
+  },
+  loaderOFF() {
+    this.loader.style.display = 'none';
+  },
 };
 
 export default refs;

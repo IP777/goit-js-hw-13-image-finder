@@ -4,6 +4,7 @@ import imagesLoaded from 'imagesloaded';
 //import gridItem from '../template/cardJS';
 import refs from './refs';
 import alert from './pnotifyAlerts';
+import proxyElement from './proxyElemen';
 
 const myHttpRequest = {
   baseUrl: 'https://pixabay.com/',
@@ -51,11 +52,7 @@ const myHttpRequest = {
       .map(img_card => imageCardTamplate(img_card))
       .join('');
 
-    const proxyEl = document.createElement('div');
-    proxyEl.innerHTML = markup;
-    const allElements = proxyEl.querySelectorAll('.grid-item');
-
-    this.renderMarkup(allElements);
+    this.renderMarkup(proxyElement(markup, '.grid-item'));
   },
   renderMarkup(markup) {
     refs.gallery_list.append(...markup);

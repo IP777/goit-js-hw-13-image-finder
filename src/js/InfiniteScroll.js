@@ -19,13 +19,7 @@ const infScroll = new InfiniteScroll(refs.gallery_list, {
 infScroll.on('load', (response, url) => {
   //console.log(response);
   const posts = JSON.parse(response);
-  const markup = posts.hits.map(post => imageCardTamplate(post)).join('');
-
-  const proxyEl = document.createElement('div');
-  proxyEl.innerHTML = markup;
-  const parsedItems = proxyEl.querySelectorAll('.grid-item');
-
-  myHttpRequest.renderMarkup(parsedItems);
+  myHttpRequest.createMarkup(posts);
 });
 
 if (refs.form_text.value) {
